@@ -4,11 +4,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'RG/**'
 
 jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: RG
 
     permissions:
       contents: write
@@ -39,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./RG/build
 
       - name: Deploy to GitHub Pages
         id: deployment

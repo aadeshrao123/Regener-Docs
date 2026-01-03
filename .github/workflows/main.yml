@@ -1,0 +1,52 @@
+# .github/workflows/deploy.yml
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or 'master' if that's your primary branch
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+
+    # Permissions for GitHub Pages deployment
+    permissions:
+      contents: write # Needed to push the build output to a branch
+      pages: write    # Needed for actions/deploy-pages
+      id-token: write # Needed for actions/deploy-pages
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Docusaurus requires the full git history for some features, like last updated time.
+          # Adjust if you don't need this and want faster checkout for very large repos.
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Use a stable Node.js version. Docusaurus typically works well with 16 or 18+.
+
+      - name: Install dependencies
+        run: npm install --immutable # --immutable is good practice for CI to ensure consistent installs
+
+      - name: Build Docusaurus website
+        run: npm run build
+
+      # Step to upload the built site as an artifact for GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build # Docusaurus builds its output to the 'build' directory by default
+
+      # Step to deploy the artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

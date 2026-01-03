@@ -1,0 +1,8 @@
+{
+  "label": "API Reference",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Technical reference for the RG Chat System C++ classes and structs."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Advanced Guides",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Guides for advanced features like Proximity Chat and Command handling."
+  }
+}

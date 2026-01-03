@@ -78,11 +78,11 @@ const config: Config = {
           items: [
             {
               label: 'Introduction',
-              to: '/docs/intro',
+              to: '/docs/rg-chat/intro',
             },
             {
               label: 'Getting Started',
-              to: '/docs/category/getting-started',
+              to: '/docs/rg-chat/getting-started/installation',
             },
           ],
         },

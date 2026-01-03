@@ -11,11 +11,11 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://regener.github.io',
-  baseUrl: '/',
+  url: 'https://aadeshrao123.github.io',
+  baseUrl: '/Regener-Docs/',
 
-  organizationName: 'Regener',
-  projectName: 'RG_Chat',
+  organizationName: 'aadeshrao123',
+  projectName: 'Regener-Docs',
 
   onBrokenLinks: 'throw',
 
@@ -64,7 +64,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/Regener/RG_Chat',
+          href: 'https://github.com/aadeshrao123/Regener-Docs',
           label: 'GitHub',
           position: 'right',
         },
